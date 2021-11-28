@@ -23,21 +23,18 @@ class JoinTask(BaseModel):
 ## romperlo. enviar vacio! 
 @app.post("/createTask")
 async def createTask(input: JoinTask):
-    print(input.task)
     result = AddTask(input.task)
     if result == -1:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             details="Error in the create task",
         )
-    print(result)
     return result
 
 
 ## romperlo. enviar vacio! 
 @app.put("/updateTask",status_code=status.HTTP_200_OK)
 async def updateTask(input: JoinTask):
-    print("entryyyyyyyyyyyyyyyyyyyyyyyyyyyyy2")
     result = upTask(input.id,input.task)
     if result == -1:
         raise HTTPException(
@@ -50,7 +47,6 @@ async def updateTask(input: JoinTask):
 
 @app.post("/deleteTask")
 async def deleteTask(input: JoinTask):
-    print(input.task)
     result = rmTask(input.id)
     if result == -1:
         raise HTTPException(

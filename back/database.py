@@ -9,6 +9,11 @@ class Task(db.Entity):
     name = Required(str)
 
 
+# class Folder(db.Entity):
+#     name = Required(str)
+#     tasks = Optional("Task")
+
+
 db.bind("sqlite", "files_db", create_db=True)
 db.generate_mapping(create_tables=True)
 
