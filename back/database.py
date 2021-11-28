@@ -23,3 +23,22 @@ def AddTask(taskName: str):
     except:
         return -1
 
+@db_session
+def upTask(id: int, name: str):
+    print("entryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+    try:
+        task = Task.get(id=id)
+        task.name = name
+        task.flush()
+        return task.to_dict(["id","name"])
+    except:
+        return -1
+
+@db_session
+def rmTask(id: int):
+    try:
+        task = Task.get(id=id)
+        task.delete()
+        return 0
+    except:
+        return -1
