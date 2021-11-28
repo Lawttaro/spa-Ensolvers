@@ -4,15 +4,16 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,  Routes, Route } from "react-router-dom";
 import App from './components/App'
+import store from './redux/store';
+import { Provider } from 'react-redux';
+
 
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <BrowserRouter>
-     <Routes>
-      <Route path="/" element={<App />} />
-    </Routes>
-  </BrowserRouter>,
+    <Provider store = {store}>
+        <App/>
+    </Provider>,
   document.getElementById('root')
 );
 

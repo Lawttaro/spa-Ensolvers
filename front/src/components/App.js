@@ -1,32 +1,47 @@
 import './App.css';
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
 import { Tab } from 'react-bootstrap';
 import { useState } from 'react';
-import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux';
+import { SetTasks } from '../redux/taskSlice';
+
+ 
+
+
+
 
 function TaskList(){
-
+  const listAux = useSelector((state) => state.tasks.value);
+  console.log(listAux)
   return(
+    
     <div>
       <ListGroup  >
         <li>  
-          <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."/>
-            First checkbox
+        {listAux.map((task) =>
+          <li>
+              <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."/>  
+                {task}
+          </li>
+        )}
         </li>
       </ListGroup>
     </div>
     );
  }
+//{cars.map((car) => <Car brand={car} />)
 
 
-
-function AddTask(){
+function AddTask(event){
+  const dispatch = useDispatch();
   const [data, setData] = useState('')
+
   const handleInputChange = (event) => {
     setData(event.target.value);
   }
-  const HandleSubmit = () => {
-    
+  const HandleSubmit = (event) => {
+    event.preventDefault();
+    document.getElementById("form-id").reset();
     let url = "http://127.0.0.1:8000/createTask";
     fetch(url, {
       method: 'POST',
@@ -35,28 +50,48 @@ function AddTask(){
       },
       body: JSON.stringify({ task: data })
     })
-
+    .then(response => response.json())
+    .then(resp => {
+      alert(resp.name)
+      alert(resp)
+      dispatch(SetTasks(resp.name))
+    })
   }
+
   return(
-    <form  >
-      <label>
-        newTask:
-        <input
-        type="text"
-        value={data}
-        onChange={handleInputChange}  />
+    <form onSubmit={HandleSubmit} id="form-id">
+      <label>New task:
+        <input 
+          type="text" 
+          onChange={handleInputChange}
+        />
       </label>
-      <input
-      onClick={HandleSubmit}
-      type="submit"
-      value="cargar" />
+      <button className="btn btn-primary" type="submit"> upload</button>
     </form>
-  );
+      );
 }
+
+  //   return(
+//     <form  >
+//       <label>
+//         newTask:
+//         <input
+//         type="text"
+//         value={data}
+//         onChange={handleInputChange}  />
+//       </label>
+//       <input
+//       onClick={HandleSubmit}
+//       type="submit"
+//        />
+//     </form>
+//   );
+// }
  
 
 
 function App() {
+
   return (
     <div className="App">
       <Container>
