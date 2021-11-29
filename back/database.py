@@ -1,5 +1,6 @@
 import re
 from pony.orm import *
+from typing import Optional, List
 
 db = Database()
 
@@ -7,11 +8,12 @@ db = Database()
 # id generated auto
 class Task(db.Entity):
     name = Required(str)
+    inFold = Optional["task"]
 
 
-# class Folder(db.Entity):
-#     name = Required(str)
-#     tasks = Optional("Task")
+class Folder(db.Entity):
+    name = Required(str)
+
 
 
 db.bind("sqlite", "files_db", create_db=True)
@@ -30,7 +32,6 @@ def AddTask(taskName: str):
 
 @db_session
 def upTask(id: int, name: str):
-    print("entryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
     try:
         task = Task.get(id=id)
         task.name = name
@@ -47,3 +48,25 @@ def rmTask(id: int):
         return 0
     except:
         return -1
+
+
+## folders
+
+@db_session
+def addFold( name: str):
+    try: 
+        newFold = Folder(name=name)
+        newFold.flush()
+        return newFold.to_dict(["id","name"])
+    except:
+        return -1
+
+
+@db_session
+def AllTakes(tk: int):
+    try:
+        aux = Task.get(id=tk)
+        aux.flush()
+        return 1
+    except:
+        return - 1
