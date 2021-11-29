@@ -63,9 +63,11 @@ def addFold( name: str):
 
 
 @db_session
-def AllTakes(tk: int):
+def AllTakes(tk: int, idFold: int):
     try:
         aux = Task.get(id=tk)
+        foldAux = Folder.get(id=tk)
+        aux.inFold = foldAux
         aux.flush()
         return 1
     except:

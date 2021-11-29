@@ -26,6 +26,7 @@ class JoinFold(BaseModel):
 
 class ThisTask(BaseModel):
     listTake: List[int] = []
+    idFold: int
 
 ## romperlo. enviar vacio! 
 @app.post("/createTask")
@@ -78,7 +79,7 @@ async def TasksInFold(input: ThisTask):
     result = 0
     leng = len(input.listTake)
     for i in range(0,leng):
-        result = AllTakes(input.listTake[i])
+        result = AllTakes(input.listTake[i], input.idFold)
         if result == -1:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
