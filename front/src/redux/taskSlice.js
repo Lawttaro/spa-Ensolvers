@@ -48,5 +48,5 @@ export const taskSlice = createSlice ({
 });
 
 export const { SetTasks, SetEdit, setTaskEdit, ResetEdit,SetRm } = taskSlice.actions
-// importante para acoplar este reduce al store principal
+
 export default taskSlice.reducer

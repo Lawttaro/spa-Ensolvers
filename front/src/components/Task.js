@@ -1,4 +1,4 @@
-import { Container, Row, Col, FormGroup } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { SetTasks, SetEdit, setTaskEdit, ResetEdit, SetRm } from '../redux/taskSlice';
@@ -58,7 +58,6 @@ function TaskList(){
 
   const dispatch = useDispatch();
   const listAux = useSelector((state) => state.tasks.value);
-  const editAux = useSelector((state => state.tasks.isEdit));
   return(    
     <div>
       <ul>
@@ -118,21 +117,21 @@ function AddTask(){
 
 
 function Task(){
-    return (
-        <div className="App">
-        <Container>
-            <Row>
-            <Col>
-                <TaskList></TaskList>
-                <AddTask></AddTask>
-            </Col>
-            <Col>
-                <EditTask></EditTask>
-            </Col>
-            </Row>
-        </Container>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Container>
+        <Row>
+          <Col>
+            <TaskList></TaskList>
+              <AddTask></AddTask>
+          </Col>
+          <Col>
+            <EditTask></EditTask>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
 export default Task;
