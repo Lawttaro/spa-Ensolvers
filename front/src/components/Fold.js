@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AddFold, agregTasks } from '../redux/foldSlice';
+import { AddFold, agregTasks, setTask } from '../redux/foldSlice';
 import { AddFolders} from '../redux/foldersSlice'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -27,7 +27,7 @@ function TaskInFold(){
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ listTake: listSelect })
+        body: JSON.stringify({ listTake: listSelect, idFold :inSelect.id })
     });
   }
   return(    
@@ -74,6 +74,7 @@ function CreateFold(){
     .then(response => response.json())
     .then(resp => {
       dispatch(AddFold(resp))
+      dispatch(setTask())
     })
   }
   return(
@@ -99,10 +100,10 @@ function ListFold() {
 
   return(
     <div>
-      <li>{name.name}</li>  
+      <li> file name : {name.name}</li>  
         <ul>
           {listAux.map(fold => 
-            <li>{fold.name}</li>
+            <li>take :{fold.name}</li>
           )}
         </ul>
     </div>

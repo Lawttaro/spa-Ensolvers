@@ -18,11 +18,22 @@ export const foldSlice = createSlice ({
             state.fold.name = action.payload.name
         },
         agregTasks: (state,action) =>{
-            state.body.push(action.payload)
+            let exist = true
+            for (var i = 0; i<state.body.length; i++){
+                if (action.payload.id === state.body[i].id){
+                    exist = false;
+                }
+            }
+            if (exist){
+                state.body.push(action.payload)
+            }
+        },
+        setTask: (state) =>{
+            state.body = []
         }
     },
 
 });
 
-export const { AddFold, agregTasks } = foldSlice.actions
+export const { AddFold, agregTasks,setTask } = foldSlice.actions
 export default foldSlice.reducer
