@@ -38,7 +38,7 @@
 * Fast api 0.1.0 
 
 ### about proyect: 
-This proyect is not completed of Phase 2, only crated folders and print for view your name and  your task at the moment they are updated. Pashe 1 yes is completed in totality. 
+This proyect is not completed of Phase 2, only crated folders and print for view your name and  your task at the moment they are updated. Pashe 1 yes is completed in totality. exist files when foldersSlice of they had a intention of include all phase 2 but not it was possible
 
 
 ### who reads it 
