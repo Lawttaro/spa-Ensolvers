@@ -30,11 +30,11 @@ export const taskSlice = createSlice ({
             }
             let url = "http://127.0.0.1:8000/deleteTask";
             fetch(url, {
-                method: 'POST',
+                method: 'DELETE',
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: action.payload.id, task: ""})
+                body: JSON.stringify({ id: action.payload.id})
             })
         },
         setTaskEdit: (state, action) =>{

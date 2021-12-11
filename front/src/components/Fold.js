@@ -34,7 +34,7 @@ function TaskInFold(){
     <div>
       <li>  folder name :{inSelect.name} </li>
       <ul>
-      {options.map(task =>
+      {listAux.map(task =>
         <li>
           {task.name}
           <button class="btn btn-link" size="sm" onClick={() => HandleClick({task})}> add </button>
