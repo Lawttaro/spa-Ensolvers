@@ -25,10 +25,12 @@ function EditTask () {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ task: data, id: editAux.id })
+        body: JSON.stringify({ name: data, id: editAux.id })
     })
     .then(response => response.json())
     .then(resp => {
+      alert(resp.name)
+      alert(resp.id)
       dispatch(setTaskEdit(resp))
       dispatch(ResetEdit())
     })
@@ -93,7 +95,7 @@ function AddTask(){
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ task: data, id: "0" })
+      body: JSON.stringify({ name: data, id: "0" })
     })
     .then(response => response.json())
     .then(resp => {
