@@ -1,9 +1,10 @@
 package com.ensolvers.back.dto;
 
+
 public class TaskDto{
   private long id;
   private String name;
-
+  private long idfold;
 
   public long getId(){
     return id;
@@ -20,4 +21,13 @@ public class TaskDto{
   public void setName(String name){
     this.name = name;
   }
+
+  public long getInfold(){
+    return idfold;
+  }
+
+  public void setInfold(long idFold){
+    this.idfold = idFold;
+  }
+
 }

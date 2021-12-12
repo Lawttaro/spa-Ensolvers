@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.ensolvers.back.dto.TaskDto;
 import com.ensolvers.back.mapper.TaskMapper;
 import com.ensolvers.back.service.TaskService;
-import com.ensolvers.back.task.*;
+import com.ensolvers.back.entity.*;
 
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -43,17 +43,9 @@ public class TaskResources{
 
   @PutMapping("/updateTask")
   public TaskDto updateTask(@RequestBody TaskDto newData){
-
-    System.out.print(newData.getId());
-    Task task = taskService.findOneById(newData.getId());
-    System.out.print(task.getName());
-    
+    Task task = taskService.findOneById(newData.getId());    
     task.setName(newData.getName());
-    // task = taskService.save(task);
-    System.out.print("/n");
-
-    System.out.print(task.getName());
-
+    taskService.saveUpdate(task);
     newData = taskMapper.taskToDto(task);
     return newData;
 

@@ -8,7 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Repository;
 
-import com.ensolvers.back.task.*;
+import com.ensolvers.back.dto.TaskDto;
+import com.ensolvers.back.entity.*;
 
 @Repository
 public class TaskRepository {
@@ -31,13 +32,29 @@ public class TaskRepository {
 		return task;
 	}
 
-	// public Task saveUpdate(Task task){
-	// 	Task edittask = tasks.get(task.getId());
-	// 	edittask.setName(task.getName());
+	public void saveUpdate(Task task){
+		tasks.forEach((key,value) -> {
+			if (key == task.getId()){
+				value.setName(task.getName());
+			}
+		});
+	}
 // https://stackoverflow.com/questions/1066589/iterate-through-a-hashmap
 	// }
-	
+
 	public void delete(Long id) {
 		tasks.remove(id);
+	}
+
+
+	public void setInFold( List<Task> source, Long IdFold ){
+		for (int i = 0; i < source.size(); i++){
+			Task aux = source.get(i);
+			tasks.forEach((key,value) -> {
+				if (key == aux.getId()){
+					value.setInFold(IdFold);
+				}
+			});
+		}
 	}
 }

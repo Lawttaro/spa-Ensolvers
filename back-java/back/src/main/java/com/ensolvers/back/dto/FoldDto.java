@@ -1,16 +1,9 @@
-package com.ensolvers.back.task;
+package com.ensolvers.back.dto;
 
+public class FoldDto{
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id; 
-
-@Entity
-public class Task{
-  
-  private @Id @GeneratedValue long id;
+  private long id;
   private String name;
-
 
   public long getId(){
     return id;
@@ -27,6 +20,4 @@ public class Task{
   public void setName(String name){
     this.name = name;
   }
-
 }
-
