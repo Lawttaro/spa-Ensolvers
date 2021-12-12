@@ -29,8 +29,6 @@ function EditTask () {
     })
     .then(response => response.json())
     .then(resp => {
-      alert(resp.name)
-      alert(resp.id)
       dispatch(setTaskEdit(resp))
       dispatch(ResetEdit())
     })

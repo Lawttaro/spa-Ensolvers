@@ -10,7 +10,7 @@ function TaskInFold(){
   const dispatch = useDispatch();
   const listAux = useSelector((state) => state.tasks.value);
   const inSelect = useSelector((state) => state.folds.fold);
-  const listSelect = useSelector((state) => state.folds.body.id)
+  const listSelect = useSelector((state) => state.folds.body)
   const options = listAux
   console.log(listAux)
 
@@ -20,6 +20,7 @@ function TaskInFold(){
 
   const HandleCreate = () => {
     var bodyFold =  JSON.stringify({idFold: inSelect.id , nameFold: inSelect.name , listTask: listSelect});
+    alert(listSelect)
     dispatch(AddFolders(bodyFold));
     let url = 'http://127.0.0.1:8000/updFold'
     fetch(url, {
@@ -69,7 +70,7 @@ function CreateFold(){
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ foldName: data, id: "0"})
+      body: JSON.stringify({ name: data, id: "0"})
     })
     .then(response => response.json())
     .then(resp => {
