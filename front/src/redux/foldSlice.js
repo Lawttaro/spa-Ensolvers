@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initFold = {
     name: "None",
-    id: 0
+    id: -1
 }
 
 export const foldSlice = createSlice ({
@@ -25,12 +25,13 @@ export const foldSlice = createSlice ({
                 }
             }
             if (exist){
+                // action.payload.infold = state.fold.id
                 state.body.push(action.payload)
             }
         },
         setTask: (state) =>{
             state.body = []
-        }
+        },
     },
 
 });

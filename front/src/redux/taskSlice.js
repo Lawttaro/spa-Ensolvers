@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const taskInit = {
     name: "None",
-    id: 0
+    id: -1
 }
 
 export const taskSlice = createSlice ({

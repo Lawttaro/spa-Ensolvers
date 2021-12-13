@@ -46,7 +46,7 @@ function EditTask () {
         className="btn btn-primary"
         type="submit" 
         size="sm"
-        disabled={editAux.id ? false : true}>
+        disabled={editAux.id + 1 ? false : true}>
         upload</button>
       </form>
     );

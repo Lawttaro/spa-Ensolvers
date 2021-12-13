@@ -5,22 +5,23 @@ import { AddFold, agregTasks, setTask } from '../redux/foldSlice';
 import { AddFolders} from '../redux/foldersSlice'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function TaskInFold(){
 
   const dispatch = useDispatch();
   const listAux = useSelector((state) => state.tasks.value);
   const inSelect = useSelector((state) => state.folds.fold);
-  const listSelect = useSelector((state) => state.folds.body)
-  const options = listAux
-  console.log(listAux)
+  const listSelect = useSelector((state) => state.folds.body);
+  const infold = inSelect.id
 
   const HandleClick = (props) => {
+    // props.task.idfold = inSelect.id
     dispatch(agregTasks(props.task))
   }
 
   const HandleCreate = () => {
+
     var bodyFold =  JSON.stringify({idFold: inSelect.id , nameFold: inSelect.name , listTask: listSelect});
-    alert(listSelect)
     dispatch(AddFolders(bodyFold));
     let url = 'http://127.0.0.1:8000/updFold'
     fetch(url, {
@@ -28,7 +29,7 @@ function TaskInFold(){
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ listTake: listSelect, idFold :inSelect.id })
+        body: JSON.stringify({ listSelect, infold})
     });
   }
   return(    
@@ -46,7 +47,7 @@ function TaskInFold(){
         type="submit" 
         size="sm"
         onClick = {HandleCreate}
-        disabled={inSelect.id ? false : true}>
+        disabled={infold + 1 ? false : true}>
         up</button>
     </div>
   );
