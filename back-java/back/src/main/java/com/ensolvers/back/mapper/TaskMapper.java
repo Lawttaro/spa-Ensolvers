@@ -35,15 +35,12 @@ public class TaskMapper{
 
 
   public List<Task> listToTask(List<TaskDto> source){
-    List<Task> tasks = new ArrayList<Task>();
-    
-    for (int i = 1; i < source.size(); i++){
-      Task put = new Task();
-      put.setName(source.get(i).getName());
-      put.setId(source.get(i).getId());
-      tasks.add(put); 
-    }    
-    return tasks;
+    if(source == null){
+      return null;
+    }
+		List<Task> target = source.stream()
+    .map(task -> dtoToTask(task)).collect(Collectors.toList());  
+    return target;
   }
 
 

@@ -2,6 +2,7 @@ package com.ensolvers.back.rest;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class FoldResources{
   
   @Autowired
   private FoldMapper foldMapper;
+  
+  @Autowired
   private TaskMapper taskMapper;  
 
   @Autowired
@@ -44,13 +47,10 @@ public class FoldResources{
 
   @PutMapping("/updFold")
   public void updateTask(@RequestBody Input input){
-    System.out.print(input.getTake());
-    System.out.print(input.getidFold());
-    System.out.print("asdnlasndjkasnbdkjasbdkjabs");
-
-    List<Task> tasks =  taskMapper.listToTask(input.getTake());
-    taskService.setInFold(tasks,input.getidFold());
-
+    if (input != null){
+      List<Task> tasks =  taskMapper.listToTask(input.getColl());
+      taskService.setInFold(tasks,input.getId());  
+    }
   }
 
 }

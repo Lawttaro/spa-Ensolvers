@@ -1,10 +1,12 @@
 package com.ensolvers.back.dto;
 
+import java.io.Serializable;
 
-public class TaskDto{
+
+public class TaskDto implements Serializable{
   private long id;
   private String name;
-  private long idfold;
+  private long infold;
 
   public long getId(){
     return id;
@@ -23,11 +25,11 @@ public class TaskDto{
   }
 
   public long getInfold(){
-    return idfold;
+    return infold;
   }
 
   public void setInfold(long idFold){
-    this.idfold = idFold;
+    this.infold = idFold;
   }
 
 }

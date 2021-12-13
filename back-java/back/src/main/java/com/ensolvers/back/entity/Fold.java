@@ -1,11 +1,7 @@
 package com.ensolvers.back.entity;
 
 import javax.annotation.processing.Generated;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id; 
-import javax.persistence.Table;
-import javax.persistence.Column;
+import javax.persistence.*;
 
 
 @Entity
@@ -13,6 +9,7 @@ import javax.persistence.Column;
 public class Fold{
 
   @Column(name = "id")
+
   private @Id @GeneratedValue long id;
   private String name;
 

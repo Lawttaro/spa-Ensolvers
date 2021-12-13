@@ -59,10 +59,3 @@ public class TaskResources{
   }
 
 }
-
-
-// public List<TaskDto> obtener() {
-//   List<Task> tasks = taskService.findAll();
-// // aca va un metodo de taskmapper que guarde la info en
-//   List<TaskDto> taskDTOs = taskMapper.toDTOList(tasks);
-//   return taskDTOs;

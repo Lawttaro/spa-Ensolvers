@@ -11,9 +11,7 @@ public class Task{
   private @Id @GeneratedValue long id;
   private String name;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "Fold_id", referencedColumnName = "id")
-  private Fold idfold;
+  private Long infold;
 
 
   public long getId(){
@@ -33,7 +31,7 @@ public class Task{
   }
 
   public void setInFold(Long id){
-    this.idfold.setId(id);
+    this.infold = id;
   }
 
 }

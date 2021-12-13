@@ -1,20 +1,26 @@
 package com.ensolvers.back.rest;
 
 import java.util.List;
+import java.util.Collection;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ensolvers.back.dto.*;
 
 public class Input{
 
-  private List<TaskDto> listTake;
-  private Long idFold;
-  
+  @JsonProperty("listSelect")
+  private List<TaskDto> listSelect;
+  @JsonProperty("infold")
+  private Long infold;
 
-  public List<TaskDto> getTake(){
-    return listTake;
+
+  public List<TaskDto> getColl(){
+    return listSelect;
   }
 
-  public Long getidFold(){
-    return idFold;
+  public Long getId(){
+    return infold;
   }
+
 }
 
